@@ -27,7 +27,7 @@ try:
     with open("token.txt") as token_file:
         TOKEN: str = token_file.read().strip()
 except Exception as ex:
-    print("Something is wrong with token file! Check it\n\nLog: {ex}")
+    print(f"Token 文件有问题! 请检查\n\n错误日志: {ex}")
 
 
 # Get providers list
@@ -223,7 +223,7 @@ def chat_function(user_id: int, prompt: str, stream: typing.Optional[bool] = Fal
 
         # Initialize chat result and error message
         chat_result: str = ""
-        error_msg: str = "Non of providers Worked. Try again!"
+        error_msg: str = "所有提供商都不可用。请重试!"
 
         # Try all available providers
         for provider in filtered_providers:
@@ -270,10 +270,10 @@ def chat_function(user_id: int, prompt: str, stream: typing.Optional[bool] = Fal
 
         # Handle Connection timed out error
         if "HTTPSConnectionPool" in str(error):
-            return "**Connection timed out**."
+            return "**连接超时**。"
 
         # Handle other error types
-        return f"**Unknown Issue**!\n\nLog:\n```\n{error}\n```"
+        return f"**未知错误**!\n\n错误日志:\n```\n{error}\n```"
 
 
 # ChatGPT's Role Prompts used in inline mode

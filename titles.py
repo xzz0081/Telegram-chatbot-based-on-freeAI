@@ -5,51 +5,51 @@
 # First 2 is normal and second 2 is for deep-linking
 # User is new (/start):
 welcome_1: str = (
-    "Hi {}\n\n"
-    "Welcome to ChatGPT bot!\n"
-    "Press /help if you need any help..."
+    "你好 {}\n\n"
+    "欢迎使用 ChatGPT 机器人!\n"
+    "如需帮助请输入 /help..."
 )
 # User already have account (/start):
 welcome_2: str = (
-    "Welcome back {}\n"
-    "Let's begin chat!"
+    "欢迎回来 {}\n"
+    "让我们开始聊天吧!"
 )
 # User is new (/start=create):
 welcome_3: str = (
-    "Hi {}\n"
-    "Your account has been created! Enjoy."
+    "你好 {}\n"
+    "你的账号已创建成功! 开始使用吧。"
 )
 # User already have account (/start?create):
 welcome_4: str = (
-    "Hi {}\n"
-    "You already have account."
+    "你好 {}\n"
+    "你已经有账号了。"
 )
 
 # No account prompt for users with no accounts:
 no_account_warn: str = (
-    "Dear {}\n\n"
-    "You need to start the bot before using it! "
-    "We need to create an account for you first:\n\n"
+    "亲爱的 {}\n\n"
+    "使用机器人前需要先创建账号! "
+    "点击以下链接创建账号:\n\n"
     "t.me/{}?start=create"
 )
 
 # History cleared prompt:
 history_cleared: str = (
-    "Dear {}\n\n"
-    "Your history cleared successfully."
+    "亲爱的 {}\n\n"
+    "你的聊天记录已成功清除。"
 )
 
 # Dan mode prompts for /danmode command
 # Dan mode enabled:
 dan_mode_enabled: str = (
-    "DAN mode _version 10.0!_\n"
-    "Status: *Enabled*"
+    "DAN 模式 _版本 10.0!_\n"
+    "状态: *已启用*"
 )
 # Dan mode disabled:
 dan_mode_disabled: str = (
-    "DAN mode _version 10.0!_\n"
-    "Status: *Disabled*\n\n"
-    "Note: History file also reset!"
+    "DAN 模式 _版本 10.0!_\n"
+    "状态: *已禁用*\n\n"
+    "注意: 聊天记录也已重置!"
 )
 
 # Help prompt for (/help) command:

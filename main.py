@@ -42,30 +42,30 @@ try:
 except telebot.apihelper.ApiTelegramException as ue:
     if "Unauthorized" in ue.description:
         raise SystemExit(
-            "Unauthorized Error!\n"
-            "  * Your Token is invalid! Use valid one."
+            "未授权错误!\n"
+            "  * 你的 Token 无效! 请使用有效的 Token。"
         )
 
 # Handle SSL error exception
 except requests.exceptions.SSLError:
     raise SystemExit(
-        "Maximum number of retries exceeded!\n"
-        "  * Check the SSL configuration on the server and ensure it's correct.\n"
-        "  * Simply try running the bot again!"
-        "  * Ensure that the date and time on your system are correct, as SSL/TLS uses timestamps to validate certificates.\n"
+        "已超过最大重试次数!\n"
+        "  * 请检查服务器的 SSL 配置是否正确。\n"
+        "  * 请尝试重新运行机器人!\n"
+        "  * 请确保系统时间正确,因为 SSL/TLS 使用时间戳验证证书。\n"
     )
 
 # Handle connection error exception
 except requests.exceptions.ConnectionError:
     raise SystemExit(
-        "Connection Error!\n"
-        "  * Try again with VPN or proxy.\n"
+        "连接错误!\n"
+        "  * 请尝试使用 VPN 或代理。\n"
     )
 
 # Handle other exceptions
 except Exception as e:
     raise SystemExit(
-        f"Unexpected Error!\n  {e}"
+        f"意外错误!\n  {e}"
     )
 
 # Command handler for 'start' command

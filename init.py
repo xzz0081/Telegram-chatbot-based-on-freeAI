@@ -23,15 +23,15 @@ GPTbot.set_my_commands(
     commands=[
         types.BotCommand(
             command="start",
-            description="Start the bot"
+            description="启动机器人"
         ),
         types.BotCommand(
             command="help",
-            description="Show help message"
+            description="显示帮助信息"
         ),
         types.BotCommand(
             command="ping",
-            description="Ping providers"
+            description="测试提供商连接"
         ),
         types.BotCommand(
             command="settings",
