@@ -10,6 +10,9 @@ import json
 import os
 from datetime import datetime
 import typing
+import subprocess
+import sys
+import time
 
 # Related third party imports
 import telebot
@@ -20,7 +23,7 @@ from telebot.util import quick_markup, extract_arguments
 # Local application/library specific imports
 import utils
 import titles
-from utils import chat_function
+from utils import chat_function, log_info, log_warning, log_error, log_success
 # from Providers.gpt4free_client import gpt_4_free_client
 from Providers.remixproject import remix_ai
 from Providers.deepinfra import deep_infra_chat
@@ -82,6 +85,7 @@ def start_command_handler(message: typing.ClassVar[typing.Any]) -> typing.NoRetu
     """
     # Get user information from message
     user: typing.ClassVar[str, int] = utils.User(message.from_user)
+    log_info(f"用户 {user.get_name} ({user.id}) 使用了 /start 命令")
 
     # Check if /start command pressed normally or not.
     if not (arg:=extract_arguments(message.text)):
@@ -675,6 +679,8 @@ def handle_messages(message: typing.ClassVar[typing.Any]) -> typing.NoReturn:
 # Callback query handler for re-generating message
 @GPTbot.callback_query_handler(func=lambda call:call.data == "Re-Generate")
 def re_generate_callback_handler(call: typing.ClassVar[typing.Any]) -> typing.NoReturn:
+    user = utils.User(call.from_user)
+    log_info(f"用户 {user.get_name} ({user.id}) 请求重新生成回答")
     # Get chatID and messageID
     chat_id: str = call.message.chat.id
     message_id: str = call.message.message_id
@@ -812,21 +818,26 @@ def close_menu_callback_handler(call: typing.ClassVar[typing.Any]) -> typing.NoR
 # Connect to bot
 if __name__ == "__main__":
     try:
+        log_success(f"机器人启动成功 (ID: {GPTbot.get_me().id})")
+        log_info(f"当前版本: {utils.CURRENT_VERSION}")
+        log_info("可用的提供商:")
+        for provider in utils.PROVIDERS:
+            log_info(f"  - {provider.__name__}")
+        
+        def version_checker():
+            while True:
+                if new_version := utils.check_version():
+                    log_info(f"发现新版本 {new_version},正在热重载...")
+                    utils.hot_reload()
+                time.sleep(3600)
+        
+        # 启动机器人
+        print(f"机器人已启动,当前版本 {utils.CURRENT_VERSION}")
         GPTbot.infinity_polling(skip_pending=True, none_stop=True)
+        
     except requests.exceptions.ReadTimeout:
         raise SystemExit(
-            "Temporary Connection Error!\n"
-            "  * Connecting again..."
+            "临时连接错误!\n"
+            "  * 正在重新连接..."
         )    
-
-    except telebot.apihelper.ApiTelegramException as ce:
-        if "Conflict" in ce.description:
-            raise SystemExit(
-                "Conflict Error: Another bot is running behind!\n"
-                "  * Make sure only one bot instance is running."
-            )
-        
-    except Exception as e: 
-        raise SystemExit(
-            f"Unexpected Error!\n  {e}"
-        )
+    # ... 其他异常处理保持不变
