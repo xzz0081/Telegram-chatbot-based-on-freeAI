@@ -1,199 +1,98 @@
- <p align="center">
-    <img align='center' src="https://github.com/Kourva/AwesomeChatGPTBot/assets/118578799/ef1cfefd-1e58-45d3-8a3a-fa9988a8322e" width=200 height=200/>
-  <p align='center'><b>Free ChatGPT Telegram Bot with Multiple Providers support!</b></p>
-  <p align='center'>No APi-Key | Pre-Defiened Roles | Inline mode | Dan Mode v10</p>
-</p>
-<br><br>
- 
-# ▋Change Log
-[**Last Status: Jul 18, 2024**]: Added Remix Project Ai!<br>
-See more logs [here](#full-change-log)
+# 智能对话机器人
 
+一个功能强大的 Telegram 对话机器人,支持多个 AI 模型和丰富的交互功能。
 
-<br>
+## ✨ 特色功能
 
-# ▋Upcoming Features
-1. **Smart reply**: Reply to user's message to process them with GPT.
-2. **Code generator**: Use code generator to generate functions in many languages.
-3. **Image generator**: Use AI to generate images from prompt.
-4. **similar question**: Generate similar questions beside **Re-Generate** button
-5. **Multi voice TTS**: Add multiple TTS voices in multiple langugaes
-7. ~~**Voice response**: Use Brian voice as your respone~~ **(DONE)**
-8. ~~**Multiple models**: Use multiple providers~~ **(DONE)**
-9. **Multiple language**: Bot supports multiple languages for better communication. (Idea by [chelaxian](https://github.com/chelaxian) | [Issue](https://github.com/Kourva/AwesomeChatGPTBot/issues/30))
+### 核心功能
+- 🤖 支持多个 AI 模型:
+  - ChatGPT 3.5/4.0
+  - LLAMA-2/3-70b
+  - 可自由切换和组合使用
+- 💬 完整的对话功能:
+  - 支持长期记忆
+  - 支持角色扮演
+  - 支持 DAN 模式
+  - 群聊和私聊皆可用
+- 🔄 智能重试机制:
+  - 自动在多个提供商间切换
+  - 确保稳定的对话体验
+- 🎯 实时状态监控:
+  - 详细的控制台日志
+  - 清晰的运行状态展示
+- ⚡️ 热重载更新:
+  - 支持在线更新
+  - 无需重启即可升级
 
-<br>
+### 辅助功能
+- 🗣 语音回复功能
+- 📝 Markdown 格式支持
+- 📋 聊天记录管理
+- 🛠 提供商设置面板
+- 🔍 实时版本检查
 
-# Multiple Providers
-From now bot includes multiple providers (Thanks for [gpt4free](https://github.com/xtekky/gpt4free)).<br>
-For responding, bot tries all providers one by one to respond and breaks the loop in first valid response. So you don't have to select provider.
-If non of providers worked, bot will tell you to generate your prompt again.<br>
-**List of available providers**:
-+ **FakeOpen Ai** (uses model ChatGPT 3.5 Turbo)
-+ **Fstha Chat** (uses model ChatGPT 3.5 Turbo)
-+ **DeepInfra AI** (uses model Llama 2 70b Chat hf)
-+ **Online GPT** (uses model ChatGPT 3.5 Turbo)
-+ **Free GPT 4** (uses ChatGPT 4)
-+ **GPT 4 Free** (uses ChatGPT 4) [gpt4free](https://github.com/xtekky/gpt4free)
-+ **Uncensored AI**: (uses Llama 3 70b)
-You can send `/settings` command to bot to change these providers (Enable/Disable)
+## 🚀 快速开始
 
-<br>
+### 环境要求
+- Python 3.8+
+- pip 包管理器
 
-# ▋Bot is Down? Not working?
-Since bot is supporting multiple providers now, you can use `/ping` to check which one is working.
+### 安装步骤
 
-### Contributions
-I welcome contributions. If you've found a reliable solution to this issue or have other useful suggestions, please consider contributing to this project.
+1. 克隆项目
 
-<br>
-
-# ▋Features
-This bot responds to every message with ChatGPT AI and other models like llama, excluding commands.
-+ Inline mode for obtaining predefined roles. [**How to use**](https://github.com/Kourva/AwesomeChatGPTBot/issues/3#issuecomment-1791705893)
-+ The ability to remember chat history.
-+ Multiple providers.
-+ Voice response.
-+ Provider settings (use /settings)
-
-<br>
-
-# ▋Clone Repository
-To get started, first you need to **clone** this repository from github into your machine:
-```bash
-git clone https://github.com/Kourva/AwesomeChatGPTBot
-```
-> if you dont have git or python you can install it from your package manager!
-
-<br>
-
-# ▋Install Requirements
-Then you have to install requirements before running bot
-1. Navigate to bot directory
-2. Install requirements using pip
-```bash
-cd AwesomeChatGPTBot
-```
-```bash
+2. 安装依赖
+bash
 pip install -r requirements.txt
-```
-This will install **pyTelegamBotAPI** and **Requests** for you, You can also install them manually if you got any error:
-```bash
-pip install pyTelegamBotAPI Requests
-```
 
-<br>
+3. 配置机器人
+- 从 [@BotFather](https://t.me/BotFather) 获取 Token
+- 将 Token 填入 `token.txt`
 
-# ▋Configure your token
-Now you have to create bot from [BotFather](https://t.me/BotFather) **(If you don't have)** and get your **Token** to start working with your bot.<br>
-After getting **Token** from **BotFather** replace the Token in `token.txt`
-```plaintext
-0000000000:AAE7fbH29UPOKzlHlp0YDr9o06o_NdD4DBk
-```
-You can use editors like 'nano' or 'vim' in Termux or using echo command to write token to file:
-```bash
-echo "0000000000:AAE7fbH29UPOKzlHlp0YDr9o06o_NdD4DBk" > token.txt
-```
-> This is just an example Token. 
-
-<br>
-
-# ▋Configure the bot commands (Optional)
-you can set your bot's commands manually or using 'init.py' script
-```bash
-python init.py
-```
-> This will set up these commands in bot's menu
-> + `/start`
-> + `/help`
-> + `/ping`
-> + `/chat`
-> + `/features`
-> + `/history`
-> + `/reset`
-> + `/danmode`
-> + `/tts`
-> + `/settings`
-
-<br>
-
-# ▋Launch the bot
-Now you are ready to launch your bot in polling mode inside your terminal using python
-```bash
+4. 启动机器人
+bash
 python main.py
-```
-You can also use **proxychains** to run your bot via **Tor** proxy
-```bash
-proxycahins python main.py
-```
-Or in quiet mode
-```bash
-proxychains -q python main.py
-```
-To install proxychains install `proxychains-ng` and then edit the config file in `/etc/proxychains.conf`.<br>
-It depends on you to use `strict_chain` or `dynamic_chain`. Config it by yourself.
-<br>
 
-# ▋TOR new IP address
-If you got any denied requests that blocked your Ip address, you can renew your IP
-```bash
-sudo killall -HUP tor
-```
-And if you want to check your TOR status, use this command:
-```bash
-proxychains curl https://check.torproject.org/api/ip
-```
+## 📝 使用说明
 
-<br>
+### 基础命令
+- `/start` - 启动机器人
+- `/help` - 显示帮助信息 
+- `/ping` - 测试提供商连接
 
-# ▋Bot Inline Mode
-Don't forget to enable **Inline Mode** in your bot.<br>
-See documentation here: https://core.telegram.org/bots/api#inline-mode
+### 聊天相关
+- `/chat` - 群聊中使用此命令
+- `/reset` - 重置聊天记录
+- `/history` - 获取聊天记录
+- `/tts` - 语音回复
+- `/settings` - 提供商设置
+- `/danmode` - DAN模式开关
 
-<br>
+### 内联功能
+使用 `@bot_name roles` 可以查看所有可用角色。
 
-# ▋Thanks a bunch for starring the project! :star:
-If you have any suggestions or feedback, feel free to share. I appreciate your interest and contribution to the project!
+## 🔧 配置说明
 
-<picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Kourva/AwesomeChatGPTBot&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Kourva/AwesomeChatGPTBot&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Kourva/AwesomeChatGPTBot&type=Date" />
-</picture>
+### 提供商设置
+可在设置面板中自由开启/关闭以下提供商:
+- Remix AI (GPT-3.5)
+- Uncensored AI (LLAMA-3-70b)
+- Free GPT 4
+- Deep Infra (LLAMA-2-70b)
+- Fstha GPT (GPT-3.5)
+- Online GPT (GPT-3.5)
+- Fakeopen AI (GPT-3.5)
 
-<br>
+## 📊 版本管理
 
-# ▋Full Change Log
-**[Jun 18, 2024]** Added Remix Project Ai!<br>
-**[Jun 17, 2024]** Fixed (FileNotFountError) in providers.json for old users!<br>
-**[Jun 05, 2024]** Added Uncensored AI!<br>
-**[Apr 21, 2024]** Added gpt4free client which have no issues operating with Cyrillic/Chinese symbols
-**[Mar 14, 2024]** Added /settings & /tts commands
-**[Mar 14, 2024]** Added voice response
-```
-/tts hi
-```
-**[Mar 14, 2024]** Added new chatGPT 4 provider<br>
-**[Dec 22, 2023]** Added Multiple Providers.<br>
-**[Dec 22, 2023]** Added `/ping` command to ping providers.<br>
-**[Dec 22, 2023]** Removed `/setting` command and setting files for users.<br>
-**[Dec 22, 2023]** Added more exception handlers for both Connection and Telegram API.<br>
-**[Dec 01, 2023] Smarter Re-generate:** Uses smarter way to re-generate replied question.<br>
-**[Dec 01, 2023] Settings command:** Added setting command to change bot response setting.<br>
-**[Dec 01, 2023] Added titles.py:** To make main code more clear.<br>
-**[Dec 01, 2023] Error handling:** Added more handlers and depp link handlers.<br> 
-**[Nov 13, 2023] PEP8 fixes:** Fixed some PEP8 issues.<br>
-**[Nov 13, 2023] Extra commands:** Added `help`, `features` and `chat` commands.<br>
-**[Nov 13, 2023] MarkdownV2:** Added converter to convert regular markdown to Markdown V2.<br>
-**[Nov 13, 2023] History management**: Added utilities to check history and fix it when it got broken.<br>
-**[Nov 13, 2023] Re-Generate**: Users can re-generate their prompts, new answer will be raplaced with old one<br>
-**[Nov 13, 2023] Improved chat handler**: Users now requied to use /chat in groups to chat with bot.<bt>
-```
-/chat hi
-```
-> This will avoid mess in replies and even reactions to bot's responses.
+当前版本: v1.0.0
 
-**[Nov 01, 2023] History command:** Added history section added (use /history to get history file)<br>
-**[Nov 01, 2023] History reset:** Added /reset command to reset the chat history.<br>
-**[Nov 01, 2023] Dan mode v10:** Added /danmode** command to enable/disable DAN mode v10.0 in bot.<br>
-> Note: History will reset when using /danmode command!!
+支持自动检查更新,发现新版本时会自动热重载。
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request 来帮助改进项目。
+
+## 📜 开源协议
+
+本项目采用 MIT 协议开源。
